@@ -1,0 +1,17 @@
+.container {
+  width: 500px;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #d4d4d4;
+  padding: 20px;
+  border-radius: 5px;
+  background: #9a9a9a;
+}
+
+
+
+
+
+.slider{
+  padding: 2rem;
+}
