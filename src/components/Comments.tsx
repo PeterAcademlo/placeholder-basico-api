@@ -1,83 +1,64 @@
 import { useState, useEffect } from 'react';
-import { Button, Typography } from 'antd';
+import { Typography, Pagination } from 'antd';
 import axios from 'axios';
 
-const { Title, Text } = Typography
+const { Title, Text } = Typography;
 
-// Define la interfaz para la estructura de datos de los comentarios
 interface Comment {
     id: number;
     name: string;
-    // Otras propiedades si las hay
+    email: string;
+    body: string;
+
 }
 
 const Comments = () => {
-    const [comments, setComments] = useState<Comment[]>([]); // Usamos la interfaz Comment
-
-    // Obtener el índice actual del localStorage al cargar el componente
-    const savedCurrentCommentIndex = localStorage.getItem('currentCommentIndex');
-    const initialCurrentCommentIndex = savedCurrentCommentIndex
-        ? parseInt(savedCurrentCommentIndex, 10)
-        : 0;
-
-    const [currentCommentIndex, setCurrentCommentIndex] = useState(initialCurrentCommentIndex);
+    const [comments, setComments] = useState<Comment[]>([]);
+    const [currentCommentIndex, setCurrentCommentIndex] = useState(0);
+    const itemsPerPage = 6; 
 
     useEffect(() => {
-        // Intentar cargar los comentarios desde el localStorage al cargar el componente
-        const savedComments = localStorage.getItem('comments');
-        if (savedComments) {
-            setComments(JSON.parse(savedComments));
-        } else {
-            // Si no hay datos en el localStorage, hacer una solicitud para obtener la lista de comentarios
-            axios
-                .get('https://jsonplaceholder.typicode.com/comments')
-                .then((response) => {
-                    const commentData = response.data;
-                    setComments(commentData);
-                    // Guardar los comentarios en el localStorage
-                    localStorage.setItem('comments', JSON.stringify(commentData));
-                })
-                .catch((error) => {
-                    console.error('Error al obtener comentarios:', error);
-                });
-        }
+        axios
+            .get('https://jsonplaceholder.typicode.com/comments')
+            .then((response) => {
+                const commentData = response.data;
+                setComments(commentData);
+            })
+            .catch((error) => {
+                console.error('Error al obtener comentarios:', error);
+            });
     }, []);
 
-    const handleShowMore = () => {
-        // Mostrar el siguiente comentario
-        if (currentCommentIndex < comments.length - 1) {
-            setCurrentCommentIndex(currentCommentIndex + 1);
-        }
+    const handlePageChange = (page: number) => {
+        setCurrentCommentIndex((page - 1) * itemsPerPage);
     };
-
-    const handleShowLess = () => {
-        // Mostrar el comentario anterior
-        if (currentCommentIndex > 0) {
-            setCurrentCommentIndex(currentCommentIndex - 1);
-        }
-    };
-
-    // Guardar el índice actual en el localStorage al cambiarlo
-    useEffect(() => {
-        localStorage.setItem('currentCommentIndex', currentCommentIndex.toString());
-    }, [currentCommentIndex]);
 
     return (
-        <div>
-            <Title>Comments:</Title>
-            <ul>
-                {comments.slice(0, currentCommentIndex + 1).map((comment) => (
-                    <div key={comment.id} style={{ marginBottom: '8px' }}>
-                        <Text>{comment.name.startsWith('-') ? comment.name : `-${comment.name}`}</Text>
-                    </div>
-                ))}
+        <div className="comments">
+            <Title className="comments__title">Comments:</Title>
+            <ul className="comments__list">
+                {comments
+                    .slice(currentCommentIndex, currentCommentIndex + itemsPerPage)
+                    .map((comment) => (
+                        <div className="comments__item comment-box" key={comment.id}>
+                            <div className="comments__content">
+                                <Text className="comments__text">
+                                    <strong>Name:</strong> {comment.name}<br />
+                                    <strong>Email:</strong> {comment.email}<br />
+                                    <strong>Body:</strong> {comment.body}<br />
+                                </Text>
+                            </div>
+                        </div>
+                    ))}
             </ul>
-            {currentCommentIndex < comments.length - 1 && (
-                <Button onClick={handleShowMore}>Ver más</Button>
-            )}
-            {currentCommentIndex > 0 && (
-                <Button onClick={handleShowLess}>Ver menos</Button>
-            )}
+            <Pagination
+                className="comments__pagination"
+                current={Math.floor(currentCommentIndex / itemsPerPage) + 1}
+                total={comments.length}
+                pageSize={itemsPerPage}
+                onChange={handlePageChange}
+                showSizeChanger={false} 
+            />
         </div>
     );
 };

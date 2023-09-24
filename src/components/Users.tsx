@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Button, Typography } from 'antd';
+import { Typography, Table } from 'antd';
 import axios from 'axios';
 
 const { Title, Text } = Typography;
@@ -7,17 +7,14 @@ const { Title, Text } = Typography;
 interface User {
     id: number;
     name: string;
+    username: string;
+    email: string;
 }
 
 const Users = () => {
     const [users, setUsers] = useState<User[]>([]);
-
-    const savedCurrentUserIndex = localStorage.getItem('currentUserIndex');
-    const initialCurrentUserIndex = savedCurrentUserIndex
-        ? parseInt(savedCurrentUserIndex, 10)
-        : 0;
-
-    const [currentUserIndex, setCurrentUserIndex] = useState(initialCurrentUserIndex);
+    const [showDetails, setShowDetails] = useState(false);
+    const [selectedUser, setSelectedUser] = useState<User | null>(null);
 
     useEffect(() => {
         const savedUsers = localStorage.getItem('users');
@@ -32,43 +29,68 @@ const Users = () => {
                     localStorage.setItem('users', JSON.stringify(userData));
                 })
                 .catch((error) => {
-                    console.error('Error al obtener usuarios:', error);
+                    console.error('Error al obtener datos de los usuarios:', error);
                 });
         }
     }, []);
 
-    const handleShowMore = () => {
-        if (currentUserIndex < users.length - 1) {
-            setCurrentUserIndex(currentUserIndex + 1);
-        }
+    const columns = [
+        {
+            title: 'ID',
+            dataIndex: 'id',
+            key: 'id',
+        },
+        {
+            title: 'Name',
+            dataIndex: 'name',
+            key: 'name',
+        },
+        {
+            title: 'Username',
+            dataIndex: 'username',
+            key: 'username',
+        },
+        {
+            title: 'Email',
+            dataIndex: 'email',
+            key: 'email',
+        },
+    ];
+
+    const handleShowDetails = (user: User) => {
+        setSelectedUser(user);
+        setShowDetails(true);
     };
 
-    const handleShowLess = () => {
-        if (currentUserIndex > 0) {
-            setCurrentUserIndex(currentUserIndex - 1);
-        }
+    const handleHideDetails = () => {
+        setShowDetails(false);
     };
-
-    useEffect(() => {
-        localStorage.setItem('currentUserIndex', currentUserIndex.toString());
-    }, [currentUserIndex]);
 
     return (
-        <div>
-            <Title>Users:</Title>
-            <ul>
-                {users.slice(0, currentUserIndex + 1).map((user) => (
-                    <div key={user.id}>
-                        <Text>{user.name}</Text>
+        <div className="users">
+            <div className="users__content">
+                <ul className="users__list">
+                <Title className="users__title">Users:</Title>
+                    {users.map((user) => (
+                        <div className="users__item" key={user.id}>
+                            <Text className="users__text">
+                                <span className="users__id">{user.id}.</span>
+                                <span className="users__name">{user.name}</span>
+                                <button className="users__button" onClick={() => handleShowDetails(user)}>
+                                    Ver Detalles
+                                </button>
+                            </Text>
+                        </div>
+                    ))}
+                </ul>
+                {showDetails && selectedUser && (
+                    <div className="users__details">
+                        <Title className="users__details-title">Detalles del User:</Title>
+                        <Table className="users__details-table" columns={columns} dataSource={[selectedUser]} pagination={false} />
+                        <button className="users__details-button" onClick={handleHideDetails}>Ver menos</button>
                     </div>
-                ))}
-            </ul>
-            {currentUserIndex < users.length - 1 && (
-                <Button onClick={handleShowMore}>Ver más</Button>
-            )}
-            {currentUserIndex > 0 && (
-                <Button onClick={handleShowLess}>Ver menos</Button>
-            )}
+                )}
+            </div>
         </div>
     );
 };

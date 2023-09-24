@@ -1,17 +1,183 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital@1&display=swap');
+
 .container {
-  width: 500px;
+  width: 1800px;
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  border: 1px solid #d4d4d4;
+
   padding: 20px;
   border-radius: 5px;
-  background: #9a9a9a;
 }
-
-
-
-
 
 .slider{
   padding: 2rem;
 }
+
+.users__list{
+  width: 410px;
+}
+
+.users__text{
+  padding-left:1rem;
+  padding-bottom: .5rem;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.users__name{
+  padding-right: 1rem;
+}
+/*------user---------*/
+.users{
+  font-family: 'Courier New', Courier, monospace;
+  margin: 0 auto;
+  padding: 3rem;
+  background: #ccc;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.users__title {
+  font-family: 'Lato', sans-serif;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.users__content {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 5rem; 
+}
+
+.users__list {
+  flex: 1;
+}
+
+.users__details {
+  font-family: 'Courier New', Courier, monospace;
+  margin: 0 auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+.users__details-table{
+  margin-top: 5rem;
+}
+
+.users__details-button {
+  margin-top: 20px; 
+}
+
+
+
+/*-------Detalles del user---------*/
+.users__details-title{
+  font-family: 'Lato', sans-serif;
+}
+
+
+/*------comments--------*/
+.comments{
+  margin-left: 20rem;
+  width: 700px;
+}
+
+.comments__title{
+  margin-left: 2rem;
+  font-family: 'Lato', sans-serif;
+}
+
+.comments__list{
+  margin-bottom: 3rem;
+}
+
+.comment-box {
+  box-shadow: 1px 1px 5px #000000;
+  border-radius: 4px;
+  margin-bottom: 20px; 
+  padding: 10px;
+}
+
+.comments__pagination{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+
+/*-------form---------*/
+.registration-form {
+  font-family: 'Courier New', Courier, monospace;
+  width: 450px;
+  height: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.registration-form__title {
+  font-family: 'Lato', sans-serif;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.registration-form__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.registration-form__field {
+  margin-bottom: 15px;
+}
+
+.registration-form__label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.registration-form__input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.registration-form__error {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.registration-form__submit-button {
+  position: relative;
+  top: 1rem;
+  left: 14.6rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  padding: .6rem 2rem .7rem 2rem;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.registration-form__submit-button:hover {
+  background-color: #0056b3;
+}
+
