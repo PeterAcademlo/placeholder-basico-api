@@ -19,7 +19,6 @@ const Comments = () => {
   const itemsPerPage = 6;
 
   useEffect(() => {
-    // Simular una demora de 3 segundos antes de cargar los datos
     setTimeout(() => {
       axios
         .get('https://jsonplaceholder.typicode.com/comments')
@@ -34,7 +33,7 @@ const Comments = () => {
           setLoading(false);
           setError('Error al cargar la información. Por favor, inténtelo de nuevo.');
         });
-    }, 2000); // Demora de 3 segundos
+    }, 2000); 
   }, []);
 
   const handlePageChange = (page: number) => {

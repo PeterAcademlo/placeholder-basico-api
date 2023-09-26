@@ -66,7 +66,6 @@ const Users: React.FC = () => {
         setShowDetails(false);
     };
 
-    // Divide los usuarios en grupos de 5
     const usersChunks: User[][] = [];
     for (let i = 0; i < users.length; i += 5) {
         usersChunks.push(users.slice(i, i + 5));
