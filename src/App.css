@@ -1,41 +1,59 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital@1&display=swap');
 
+body{
+  background: rgb(7,23,56);
+  background: linear-gradient(0deg, rgba(7,23,56,1) 0%, rgba(2,38,88,1) 95%);
+}
+
+.menu {
+  padding: 1rem;
+}
+
 .container {
-  width: 1800px;
+  width: 1700px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   padding: 20px;
   border-radius: 5px;
 }
 
-.slider{
-  padding: 2rem;
+.slider {
+  top: 40px;
+  left: -1px;
+  width: 300px;
+  height: 300px;
+  position: absolute;
 }
 
-.users__list{
-  width: 410px;
-}
-
-.users__text{
-  padding-left:1rem;
-  padding-bottom: .5rem;
+.menu-container {
+  border-radius: 0 1.2rem 1.2rem 0;
+  padding: .1rem;
+  width: 300px;
+  height: 100px;
   display: flex;
-  justify-content: space-between;
-  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: #018af9;
+  color: #fff;
 }
 
-.users__name{
-  padding-right: 1rem;
+.menu-container__comments,
+.menu-container__user{
+  text-align: center;
 }
+
+
 /*------user---------*/
-.users{
+.users {
+  margin-top: 2rem;
+  margin-left: 10rem;
+  width: 800px;
   font-family: 'Courier New', Courier, monospace;
-  margin: 0 auto;
-  padding: 3rem;
-  background: #ccc;
-  border: 1px solid #ccc;
+  padding: 1rem;
+  background: #018af9;
+  border: 1px solid #ffffff;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   display: flex;
@@ -45,8 +63,25 @@
 
 .users__title {
   font-family: 'Lato', sans-serif;
+  color: #fff;
   text-align: center;
   margin-bottom: 20px;
+}
+
+.users__list {
+  width: 500px;
+  margin-right: 4rem;
+}
+
+.users__text {
+  padding-bottom: .5rem;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.users__name {
+  padding-right: 1rem;
 }
 
 .users__content {
@@ -54,81 +89,144 @@
   flex-direction: row;
   align-items: flex-start;
   justify-content: center;
-  gap: 5rem; 
 }
 
-.users__list {
-  flex: 1;
+.carousel {
+  padding-bottom: 2rem;
+}
+
+
+/*-------Detalles del user---------*/
+.users__details-title {
+  margin-right: 10rem;
+  font-family: 'Lato', sans-serif;
 }
 
 .users__details {
+  width: 560px;
   font-family: 'Courier New', Courier, monospace;
-  margin: 0 auto;
-  padding: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-
-
-.users__details-table{
-  margin-top: 5rem;
+.users__details-table {
+  width: 555px;
+  margin-right: 5rem;
+  margin-top: 3rem;
 }
 
 .users__details-button {
-  margin-top: 20px; 
-}
-
-
-
-/*-------Detalles del user---------*/
-.users__details-title{
-  font-family: 'Lato', sans-serif;
+  margin-top: 1.4rem;
+  display: flex;
+  margin-left: 17rem;
 }
 
 
 /*------comments--------*/
-.comments{
-  margin-left: 20rem;
-  width: 700px;
+.comments {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-left: 30rem;
+  margin-bottom: 3rem;
+  width: 1000px;
 }
 
-.comments__title{
+.comments__title {
   margin-left: 2rem;
   font-family: 'Lato', sans-serif;
 }
 
-.comments__list{
+.comments__list {
   margin-bottom: 3rem;
 }
 
-.comment-box {
+.comment-box{
+  background: #ffffff;
+  width: 1000px;
   box-shadow: 1px 1px 5px #000000;
   border-radius: 4px;
-  margin-bottom: 20px; 
+  margin-bottom: 15px;
   padding: 10px;
+  transition: .5s ease;
+  display:inline-block;
 }
 
-.comments__pagination{
+.comment-box:hover {
+  scale: calc(1.01);
+}
+
+.comments__pagination {
+  border-radius: 1rem;
+  padding: .5rem 4rem .5rem 4rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: .5s ease;
 }
 
+.comments__pagination:hover {
+  background: #ffffff;
+  scale: calc(1.01);
+}
+
+/*-------new-user-form---------*/
+.new-user {
+  bottom: 10rem;
+  right: 10rem;
+  position: fixed;
+  width: 650px;
+  height: 600px;
+  font-family: 'Courier New', Courier, monospace;
+  padding: 1rem;
+  background: #018af9;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.new-user__list {
+  width: 570px;
+}
+
+.new-user__title {
+  font-family: 'Lato', sans-serif;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.new-user__text {
+  padding-bottom: .5rem;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  margin-left: 5rem;
+  margin-right: 5rem;
+}
 
 
 
 /*-------form---------*/
 .registration-form {
+  padding: .5rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+
+}
+
+.registration-form__form-container {
   font-family: 'Courier New', Courier, monospace;
-  width: 450px;
+  width: 400px;
   height: 400px;
   margin: 0 auto;
   padding: 20px;
-  border: 1px solid #ccc;
   border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .registration-form__title {
@@ -166,18 +264,70 @@
 
 .registration-form__submit-button {
   position: relative;
-  top: 1rem;
-  left: 14.6rem;
-  background-color: #007bff;
+  top: 2rem;
+  left: 18.7rem;
+  background:#018af9;
   color: #fff;
   border: none;
   border-radius: 3px;
   padding: .6rem 2rem .7rem 2rem;
   font-size: 16px;
   cursor: pointer;
+  transition: .5s ease;
 }
 
 .registration-form__submit-button:hover {
   background-color: #0056b3;
+  scale: calc(1.01);
 }
 
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+}
+
+.registration-form__table-button {
+  height: 50px;
+}
+
+.registration-form__table-container {
+  width: 630px;
+  font-family: 'Courier New', Courier, monospace;
+  border-radius: 5px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.registration-form__table {
+  border-radius: 1rem;
+  width: 555px;
+  max-height: 139px;
+  overflow-y: auto;
+}
+
+.registration-form__button {
+  margin-top: 6rem;
+  margin-left: 29rem;
+}
+
+.custom-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  width: 6rem;
+  color: #fff;
+  bottom:24rem;
+  left: 10rem;
+}
+
+.registration-form__table-button-add{
+  margin-top: .3rem;
+  width: 20px;
+}
