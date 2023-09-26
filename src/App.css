@@ -320,11 +320,11 @@ body{
   justify-content: center;
   align-items: center;
   text-align: center;
-  position: relative;
+  position: fixed;
   width: 6rem;
   color: #fff;
-  bottom:24rem;
-  left: 10rem;
+  top:4rem;
+  right: 3rem;
 }
 
 .registration-form__table-button-add{
