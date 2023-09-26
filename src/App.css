@@ -10,7 +10,6 @@ body{
 }
 
 .container {
-  width: 1700px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -19,15 +18,17 @@ body{
 }
 
 .slider {
-  top: 40px;
+  top: -.001px;
   left: -1px;
   width: 300px;
-  height: 300px;
+  height: 100px;
   position: absolute;
+  box-shadow: 2px 2px 3px #fffffff6;
+  border-radius: 0 0 1.2rem 0;
 }
 
 .menu-container {
-  border-radius: 0 1.2rem 1.2rem 0;
+  border-radius: 0 0 1.2rem 0;
   padding: .1rem;
   width: 300px;
   height: 100px;
@@ -47,14 +48,14 @@ body{
 
 /*------user---------*/
 .users {
-  margin-top: 2rem;
+  margin-top: 4.6rem;
   margin-left: 10rem;
   width: 800px;
   font-family: 'Courier New', Courier, monospace;
-  padding: 1rem;
+  padding: .3rem;
   background: #018af9;
   border: 1px solid #ffffff;
-  border-radius: 5px;
+  border-radius: 1rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
@@ -65,7 +66,7 @@ body{
   font-family: 'Lato', sans-serif;
   color: #fff;
   text-align: center;
-  margin-bottom: 20px;
+  margin-top: 1px;
 }
 
 .users__list {
@@ -92,13 +93,13 @@ body{
 }
 
 .carousel {
-  padding-bottom: 2rem;
+  padding-bottom: 1rem;
 }
 
 
 /*-------Detalles del user---------*/
 .users__details-title {
-  margin-right: 10rem;
+  margin-right: 5rem;
   font-family: 'Lato', sans-serif;
 }
 
@@ -113,13 +114,12 @@ body{
 .users__details-table {
   width: 555px;
   margin-right: 5rem;
-  margin-top: 3rem;
 }
 
 .users__details-button {
   margin-top: 1.4rem;
   display: flex;
-  margin-left: 17rem;
+  margin-left: 22.2rem;
 }
 
 
@@ -174,13 +174,13 @@ body{
 
 /*-------new-user-form---------*/
 .new-user {
-  bottom: 10rem;
-  right: 10rem;
-  position: fixed;
-  width: 650px;
-  height: 600px;
+  bottom: 1rem;
+  right: 1rem;
+  width: 640px;
+  height: 500px;
   font-family: 'Courier New', Courier, monospace;
   padding: 1rem;
+  margin-left: 1rem;
   background: #018af9;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -311,7 +311,7 @@ body{
 }
 
 .registration-form__button {
-  margin-top: 6rem;
+  margin-top: 1.5rem;
   margin-left: 29rem;
 }
 
